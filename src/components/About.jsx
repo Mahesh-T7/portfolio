@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { MapPin, GraduationCap, Code2, Brain, Mail, Github, Linkedin } from 'lucide-react'
 import { useTheme } from '../hooks/useTheme'
 import { useScrollReveal } from '../hooks/useScrollReveal'
-import { personal } from '../data'
+import { personal, currentlyLearning } from '../data'
 
 const strengths = [
   {
@@ -55,7 +55,7 @@ export default function About() {
           variants={container}
           initial="hidden"
           animate={isInView ? 'show' : 'hidden'}
-          className="grid lg:grid-cols-2 gap-16 items-center"
+          className="grid lg:grid-cols-2 gap-16 items-start"
         >
           {/* Left */}
           <div>
@@ -91,11 +91,82 @@ export default function About() {
               When I'm not coding, I'm grinding competitive programming, contributing to open source, playing chess, or learning new languages — both human and machine.
             </motion.p>
 
-            <motion.div variants={item} className="flex items-center gap-2">
+            <motion.div variants={item} className="flex items-center gap-2 mb-8">
               <MapPin size={16} className={isDark ? 'text-acid' : 'text-acid-dim'} />
               <span className={`font-mono text-sm ${isDark ? 'text-white/50' : 'text-ink-400'}`}>
                 {personal.location}
               </span>
+            </motion.div>
+
+            {/* Interests & Currently Learning Grid */}
+            <motion.div variants={item} className="grid sm:grid-cols-2 gap-4">
+              {/* Interests */}
+              <motion.div
+                whileHover={{ x: 6 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                className={`p-4 rounded-2xl ${
+                  isDark ? 'glass' : 'bg-slate-50 border border-black/5'
+                }`}
+              >
+                <p className={`text-sm font-mono mb-3 ${isDark ? 'text-white/30' : 'text-ink-300'}`}>
+                  interests[]
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['Competitive Programming', 'Open Source', 'Chess', 'Language Learning'].map(tag => (
+                    <span
+                      key={tag}
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        isDark
+                          ? 'bg-acid/10 text-acid border border-acid/20'
+                          : 'bg-acid/10 text-acid-dim border border-acid/20'
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Currently Learning */}
+              <motion.div
+                whileHover={{ x: 6 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                className={`p-4 rounded-2xl ${
+                  isDark ? 'glass' : 'bg-slate-50 border border-black/5'
+                }`}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs font-mono" style={{ color: '#a78bfa' }}>{'>'}_</span>
+                  <p className={`text-sm font-mono font-medium ${isDark ? 'text-white/70' : 'text-ink-600'}`}>
+                    currently_learning[]
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  {currentlyLearning.map((item) => (
+                    <div
+                      key={item.label}
+                      className={`flex items-start gap-2.5 p-2.5 rounded-xl ${
+                        isDark ? 'bg-white/4 hover:bg-white/7' : 'bg-white hover:bg-white'
+                      } transition-colors`}
+                    >
+                      <span className="text-lg leading-none mt-0.5">{item.emoji}</span>
+                      <div>
+                        <span
+                          className="text-xs font-semibold px-2 py-0.5 rounded-full mb-0.5 inline-block"
+                          style={{ background: `${item.color}18`, color: item.color, border: `1px solid ${item.color}30` }}
+                        >
+                          {item.label}
+                        </span>
+                        <p className={`text-xs leading-relaxed ${
+                          isDark ? 'text-white/45' : 'text-ink-400'
+                        }`}>
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
             </motion.div>
           </div>
 
@@ -170,33 +241,6 @@ export default function About() {
                 </div>
               </motion.div>
             ))}
-
-            {/* Interests */}
-            <motion.div
-              whileHover={{ x: 6 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-              className={`p-5 rounded-2xl ${
-                isDark ? 'glass' : 'bg-slate-50 border border-black/5'
-              }`}
-            >
-              <p className={`text-sm font-mono mb-3 ${isDark ? 'text-white/30' : 'text-ink-300'}`}>
-                interests[]
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {['Competitive Programming', 'Open Source', 'Chess', 'Language Learning'].map(tag => (
-                  <span
-                    key={tag}
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      isDark
-                        ? 'bg-acid/10 text-acid border border-acid/20'
-                        : 'bg-acid/10 text-acid-dim border border-acid/20'
-                    }`}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
         </motion.div>
       </div>

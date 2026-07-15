@@ -47,13 +47,29 @@ export const skillTags = [
   'React.js', 'Node.js', 'MongoDB', 'Express.js', 'Socket.io', 'WebRTC',
   'OpenAI API', 'JWT', 'Tailwind CSS', 'REST API', 'Java', 'Python',
   'JavaScript ES6+', 'MySQL', 'Git', 'Postman', 'VS Code',
+  'AI / ML', 'Cloud Computing',
+]
+
+export const currentlyLearning = [
+  {
+    label: 'AI / Machine Learning',
+    emoji: '🤖',
+    desc: 'Exploring neural networks, model training, and ML pipelines with Python & scikit-learn.',
+    color: '#a78bfa',
+  },
+  {
+    label: 'Cloud Computing',
+    emoji: '☁️',
+    desc: 'Learning AWS & GCP fundamentals — compute, storage, serverless, and deployment pipelines.',
+    color: '#38bdf8',
+  },
 ]
 
 export const projects = [
   {
     id: 1,
     title: 'AI Collaborative Coding Platform',
-    status: 'Ongoing',
+    status: 'Completed',
     description: 'Real-time collaborative IDE supporting 50+ concurrent users with AI-powered code completion, video conferencing, and automated documentation generation.',
     highlights: [
       '50+ concurrent users, sub-200ms latency',
@@ -64,7 +80,7 @@ export const projects = [
     tech: ['React.js', 'Node.js', 'MongoDB', 'Socket.io', 'WebRTC', 'OpenAI API', 'JWT'],
     color: '#00ff87',
     github: 'https://github.com/Mahesh-T7',
-    demo: null,
+    demo: 'https://ai-collabrative-coding.vercel.app',
     icon: '⚡',
   },
   {
